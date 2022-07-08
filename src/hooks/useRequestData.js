@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const useRequestData = (initialData, url) => {
-  const [data, setData] = useState(initialData);
+const useRequestData = url => {
+  const [data, setData] = useState({});
 
   useEffect(() => {
     axios
       .get(url)
       .then(response => {
-        console.log(response.data.results);
-        setData(response.data.results);
+        console.log(response.data);
+        setData(response.data);
       })
       .catch(error => {
         console.log(error);
