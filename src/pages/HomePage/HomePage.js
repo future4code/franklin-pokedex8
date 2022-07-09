@@ -11,13 +11,13 @@ const HomePage = () => {
   const [previousPageUrl, setPreviousPageUrl] = useState();
   const navigate = useNavigate();
 
-  // const goToNextPage = () => {
-  //   setCurrentPageUrl(nextPageUrl);
-  // };
+  const goToNextPage = () => {
+    setCurrentPageUrl(nextPageUrl);
+  };
 
-  // const goToPreviousPage = () => {
-  //   setCurrentPageUrl(previousPageUrl);
-  // };
+  const goToPreviousPage = () => {
+    setCurrentPageUrl(previousPageUrl);
+  };
 
   useEffect(() => {
     axios
@@ -58,11 +58,19 @@ const HomePage = () => {
 
   return (
     <div>
+      <div>
+        {previousPageUrl && (
+          <button onClick={goToPreviousPage}>Anterior</button>
+        )}
+        <button onClick={goToNextPage}>Proxima</button>
+      </div>
+
       <div className="Header">
         <button>pokedex</button>
         Lista Pokemons
       </div>
       <div>{pokemons && pokeCard}</div>
+
 
     </div>
   );

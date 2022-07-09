@@ -14,9 +14,10 @@ const getPokemon = () => {
     .get(`${BASE_URL}/${params.idOrName}`)
     .then(response => {
       setPokemon(response.data)
-      console.log(response.data.forms)
-      console.log(response.data.abilities)
-      console.log(response.data.moves[0].move.name)
+      // console.log(response.data.forms)
+      // console.log(response.data.abilities)
+      // console.log(pokemon.moves[0].move.name)
+      // console.log(pokemon.stats[0].base_stat)
     })
     .catch(error =>{
       console.log(error);
@@ -26,33 +27,39 @@ const getPokemon = () => {
 
 useEffect(getPokemon, []);
 
-function showStats() {
-  return (
-    <div>
-        <img src='##DE FRENTE'/>
-        <img src='##DE COSTAS'/>
-        <div>
-        <h2>STATS</h2>
-          <p> HP</p>
-          <p> ATK</p>
-          <p> DEF</p>
-          <p> SPECIAL-ATK</p>
-          <p> SPECIAL-DEF</p>
-          <p> SPEED</p>
-        </div>
-        <div>
-          <p>##TIPO 1##</p>
-          <p>##TIPO 2##</p>
-        </div>
-        <div>
-          <h2>MOVES</h2>
-          <p> Moves </p>
-          <p> ## MOVE NAME 2 ##</p>
-          <p> ## MOVE NAME 3 ##</p>
-        </div>
-    </div>
-  );
-};
+const pokemonStats = () => {
+  pokemon.stat.map((item) =>{
+      console.log(pokemon.stat.name)
+    })
+}
+
+// const showStats = () => {
+//   return (
+//     <div>
+//         <img src='##DE FRENTE'/>
+//         <img src='##DE COSTAS'/>
+//         <div>
+//         <h2>STATS</h2>
+//           <p> HP </p>
+//           <p> ATK </p>
+//           <p> DEF </p>
+//           <p> SPECIAL-ATK </p>
+//           <p> SPECIAL-DEF </p>
+//           <p> SPEED </p>
+//         </div>
+//         <div>
+//           <p>##TIPO 1##</p>
+//           <p>##TIPO 2##</p>
+//         </div>
+//         <div>
+//           <h2>MOVES</h2>
+//           <p> Moves </p>
+//           <p> ## MOVE NAME 2 ##</p>
+//           <p> ## MOVE NAME 3 ##</p>
+//         </div>
+//     </div>
+//   );
+// };
 
   return (
     <div>
@@ -69,23 +76,15 @@ function showStats() {
             <img src='##DE COSTAS'/>
             <div>
             <h2>STATS</h2>
-              <p> HP</p>
-              <p> ATK</p>
-              <p> DEF</p>
-              <p> SPECIAL-ATK</p>
-              <p> SPECIAL-DEF</p>
-              <p> SPEED</p>
-            </div>
-            <div>
-              <p>##TIPO 1##</p>
-              <p>##TIPO 2##</p>
-            </div>
-            <div>
-              <h2>MOVES</h2>
+            {pokemon.length>0? console.log(pokemon.stat) : console.log('vazio')
+            // pokemon.stat.map((item) =>{
+            // return (
+            // <div>
+            //   {pokemon.stat.name}:{pokemon.base_stat}
+            // </div>
+            // )
+            }
 
-              <p> Move: </p>
-              <p> ## MOVE NAME 2 ##</p>
-              <p> ## MOVE NAME 3 ##</p>
             </div>
         </div>
     </div>
