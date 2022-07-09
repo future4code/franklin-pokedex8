@@ -8,13 +8,13 @@ const DetailsPage = () => {
 const navigate = useNavigate();
 const params = useParams();
 const [pokemon, setPokemon] = useState({});
-
+// console.log(params)
 const getPokemon = () => {
-  axios
+  axios 
     .get(`${BASE_URL}/${params.idOrName}`)
     .then(response => {
       setPokemon(response.data)
-      // console.log(response.data.forms)
+      console.log(response.data)
       // console.log(response.data.abilities)
       // console.log(pokemon.moves[0].move.name)
       // console.log(pokemon.stats[0].base_stat)
@@ -27,11 +27,17 @@ const getPokemon = () => {
 
 useEffect(getPokemon, []);
 
-const pokemonStats = () => {
-  pokemon.stat.map((item) =>{
-      console.log(pokemon.stat.name)
-    })
-}
+// const pokemonStats = () => {
+//   pokemon.stat.map((item) =>{
+//     return (
+//       <div>
+//         {pokemon.stat.name}
+//         console.log(pokemon.stat.name)
+//       </div>
+//     )
+//   })
+// }
+
 
 // const showStats = () => {
 //   return (
@@ -76,15 +82,29 @@ const pokemonStats = () => {
             <img src='##DE COSTAS'/>
             <div>
             <h2>STATS</h2>
-            {pokemon.length>0? console.log(pokemon.stat) : console.log('vazio')
-            // pokemon.stat.map((item) =>{
-            // return (
-            // <div>
-            //   {pokemon.stat.name}:{pokemon.base_stat}
-            // </div>
-            // )
-            }
-
+            <div>
+         <img src='##DE FRENTE'/>
+        <img src='##DE COSTAS'/>
+        {pokemon.length>0? (<div>
+         <h2>STATS</h2>
+           <p> HP: {pokemon.stats[0].base_stat}</p>
+           <p> ATK: {pokemon.stats[1].base_stat} </p>
+           <p> DEF: {pokemon.stats[2].base_stat} </p>
+           <p> SPECIAL-ATK: {pokemon.stats[3].base_stat} </p>
+           <p> SPECIAL-DEF: {pokemon.stats[4].base_stat} </p>
+          <p> SPEED: {pokemon.stats[5].base_stat} </p>
+        </div>): console.log('vazio')}
+         <div>
+           <p>##TIPO 1##</p>
+           <p>##TIPO 2##</p>
+         </div>
+         <div>
+           <h2>MOVES</h2>
+           <p> Moves </p>
+           <p> ## MOVE NAME 2 ##</p>
+           <p> ## MOVE NAME 3 ##</p>
+         </div>
+         </div>
             </div>
         </div>
     </div>
