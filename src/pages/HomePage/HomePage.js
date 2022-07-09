@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../constants/url';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { goToDetailsPage, goToPokedexPage } from '../../routes/coordinator';
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
   const [currentPageUrl, setCurrentPageUrl] = useState(BASE_URL);
   const [nextPageUrl, setNextPageUrl] = useState();
   const [previousPageUrl, setPreviousPageUrl] = useState();
+  const navigate = useNavigate();
 
   // const goToNextPage = () => {
   //   setCurrentPageUrl(nextPageUrl);
@@ -31,7 +34,7 @@ const HomePage = () => {
       });
   }, [currentPageUrl]);
 
-  console.log(pokemons);
+
 
   const pokeCard = pokemons.map(pokemon => {
     return (
@@ -42,12 +45,11 @@ const HomePage = () => {
           }.svg`}
           alt={pokemon.name}
         />
-        {pokemon.url.split('/')[6]}
         <div>
           <h2>{pokemon.name}</h2>
           <div>
-            <button onClick={'addPokedex'}> Adicionar </button>
-            <button> Detalhes </button>
+            <button onClick={() => goToPokedexPage(navigate)}> Adicionar </button>
+            <button onClick={() => goToDetailsPage(navigate, pokemon.name)}> Detalhes </button>
           </div>
         </div>
       </div>
@@ -61,6 +63,7 @@ const HomePage = () => {
         Lista Pokemons
       </div>
       <div>{pokemons && pokeCard}</div>
+
     </div>
   );
 };
