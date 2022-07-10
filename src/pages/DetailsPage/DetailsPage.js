@@ -80,7 +80,7 @@ useEffect(getPokemon, []);
          </div>
          <div>
          <h2>MOVES</h2>
-         {pokemonMoves.map((pokemon) => { 
+         {pokemonMoves.slice(0,5).map((pokemon) => { 
                 return (
                     <div key={pokemon.move.name}> 
                         <p><strong>{pokemon.move.name}: </strong>{pokemon.move.name}</p>
