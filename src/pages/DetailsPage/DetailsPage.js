@@ -5,19 +5,26 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { goToBackPage } from '../../routes/coordinator';
 
 const DetailsPage = () => {
+  const [pokemons, setPokemons] = useState([]);
+  const [pokemonStats, setPokemonStats] = useState([]);
+  const [pokemonType, setPokemonType] = useState([]);
+  const [pokemonMoves, setPokemonMoves] = useState([]);
+  const [id, setId] = useState('')
+
 const navigate = useNavigate();
 const params = useParams();
-const [pokemon, setPokemon] = useState({});
 // console.log(params)
 const getPokemon = () => {
   axios 
     .get(`${BASE_URL}/${params.idOrName}`)
     .then(response => {
-      setPokemon(response.data)
-      console.log(response.data)
-      // console.log(response.data.abilities)
-      // console.log(pokemon.moves[0].move.name)
-      // console.log(pokemon.stats[0].base_stat)
+      setPokemonStats(response.data.stats)
+      console.log(response.data.stats)
+      setPokemonType(response.data.types)
+      console.log(response.data.types)
+      setPokemonMoves(response.data.moves)
+      console.log(response.data.moves)
+      setId(response.data.id)
     })
     .catch(error =>{
       console.log(error);
@@ -27,85 +34,61 @@ const getPokemon = () => {
 
 useEffect(getPokemon, []);
 
-// const pokemonStats = () => {
-//   pokemon.stat.map((item) =>{
-//     return (
-//       <div>
-//         {pokemon.stat.name}
-//         console.log(pokemon.stat.name)
-//       </div>
-//     )
-//   })
-// }
-
-
-// const showStats = () => {
-//   return (
-//     <div>
-//         <img src='##DE FRENTE'/>
-//         <img src='##DE COSTAS'/>
-//         <div>
-//         <h2>STATS</h2>
-//           <p> HP </p>
-//           <p> ATK </p>
-//           <p> DEF </p>
-//           <p> SPECIAL-ATK </p>
-//           <p> SPECIAL-DEF </p>
-//           <p> SPEED </p>
-//         </div>
-//         <div>
-//           <p>##TIPO 1##</p>
-//           <p>##TIPO 2##</p>
-//         </div>
-//         <div>
-//           <h2>MOVES</h2>
-//           <p> Moves </p>
-//           <p> ## MOVE NAME 2 ##</p>
-//           <p> ## MOVE NAME 3 ##</p>
-//         </div>
-//     </div>
-//   );
-// };
 
   return (
     <div>
         <div className='Header'>
           <button onClick={() => goToBackPage(navigate)}> Voltar </button>
-          <h1>Nome Pokemon</h1>
+          <h1>{params.idOrName}</h1>
+  
+
           <div>
             <button> Adicionar na Pokedex</button>
             <button> Remover na Pokedex</button>
           </div>
         </div>
         <div>
-            <img src='##DE FRENTE'/>
-            <img src='##DE COSTAS'/>
-            <div>
-            <h2>STATS</h2>
-            <div>
-         <img src='##DE FRENTE'/>
-        <img src='##DE COSTAS'/>
-        {pokemon.length>0? (<div>
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
+          alt={id}
+        />
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}/>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${id}.png`}/>
+        </div>
+       
+            
+
+
          <h2>STATS</h2>
-           <p> HP: {pokemon.stats[0].base_stat}</p>
-           <p> ATK: {pokemon.stats[1].base_stat} </p>
-           <p> DEF: {pokemon.stats[2].base_stat} </p>
-           <p> SPECIAL-ATK: {pokemon.stats[3].base_stat} </p>
-           <p> SPECIAL-DEF: {pokemon.stats[4].base_stat} </p>
-          <p> SPEED: {pokemon.stats[5].base_stat} </p>
-        </div>): console.log('vazio')}
+         {pokemonStats.map((pokemon) => { 
+                return (
+                    <div key={pokemon.stat.name}> 
+                        <p><strong>{pokemon.stat.name}: </strong>{pokemon.base_stat}</p>
+                    </div>
+    )
+        })}
+
          <div>
-           <p>##TIPO 1##</p>
-           <p>##TIPO 2##</p>
+         <h2>TIPOS</h2>
+         {pokemonType.map((pokemon) => { 
+                return (
+                    <div key={pokemon.type.name}> 
+                        <p><strong>{pokemon.type.name}: </strong>{pokemon.type.name}</p>
+                    </div>
+    )
+        })}
          </div>
          <div>
-           <h2>MOVES</h2>
-           <p> Moves </p>
-           <p> ## MOVE NAME 2 ##</p>
-           <p> ## MOVE NAME 3 ##</p>
-         </div>
-         </div>
-            </div>
+         <h2>MOVES</h2>
+         {pokemonMoves.map((pokemon) => { 
+                return (
+                    <div key={pokemon.move.name}> 
+                        <p><strong>{pokemon.move.name}: </strong>{pokemon.move.name}</p>
+                    </div>
+    )
+        })}
+
+
         </div>
     </div>
   );
