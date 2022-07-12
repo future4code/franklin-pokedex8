@@ -3,6 +3,15 @@ import { BASE_URL } from '../../constants/url';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { goToDetailsPage, goToPokedexPage } from '../../routes/coordinator';
+import styled from 'styled-components';
+
+export const PokeCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  height: 100vh;
+`;
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -34,8 +43,6 @@ const HomePage = () => {
       });
   }, [currentPageUrl]);
 
-
-
   const pokeCard = pokemons.map(pokemon => {
     return (
       <div className="Poke Card">
@@ -48,8 +55,14 @@ const HomePage = () => {
         <div>
           <h2>{pokemon.name}</h2>
           <div>
-            <button onClick={() => goToPokedexPage(navigate)}> Adicionar </button>
-            <button onClick={() => goToDetailsPage(navigate, pokemon.name)}> Detalhes </button>
+            <button onClick={() => goToPokedexPage(navigate)}>
+              {' '}
+              Adicionar{' '}
+            </button>
+            <button onClick={() => goToDetailsPage(navigate, pokemon.name)}>
+              {' '}
+              Detalhes{' '}
+            </button>
           </div>
         </div>
       </div>
@@ -70,8 +83,6 @@ const HomePage = () => {
         Lista Pokemons
       </div>
       <div>{pokemons && pokeCard}</div>
-
-
     </div>
   );
 };
