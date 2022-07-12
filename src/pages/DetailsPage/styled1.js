@@ -4,6 +4,7 @@ export const Container = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #292f4e;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -28,14 +29,14 @@ export const MainContainer = styled.div`
 
 export const PokemonBackground = styled.div`
   border-radius: 0 0 50% 50%;
-  background-color: #93caa8;
+  background-color: #545971;
   width: 700px;
   height: 400px;
 `;
 
 export const Name = styled.h1`
   position: absolute;
-  color: #fff;
+  color: #f7b916;
   top: 7%;
   text-transform: capitalize;
   font-size: 50px;
@@ -53,6 +54,7 @@ export const Description = styled.div`
   display: flex;
   justify-content: space-between;
   width: 50vw;
+  color: white;
 `;
 
 export const DivButton = styled.div`
@@ -62,30 +64,30 @@ export const DivButton = styled.div`
 `;
 
 export const PokedexButtonAdd = styled.button`
-  background-color: white;
-  color: #006359;
+  background-color: #f7b916;
+  color: #292f4e;
   font-weight: bold;
   border: none;
   border-radius: 15px;
   padding: 10px 20px;
   box-shadow: 1px 2px 1px 1.5px rgba(0, 0, 0, 0.15);
   &:hover {
-    background-color: #006359;
-    color: #fff;
+    background-color: #545971;
+    color: #f7b916;
   }
 `;
 
 export const PokedexButtonDelete = styled.button`
-  background-color: white;
-  color: #f25e3d;
+  background-color: #f7b916;
+  color: #292f4e;
   font-weight: bold;
   border: none;
   border-radius: 15px;
   padding: 10px 20px;
   box-shadow: 1px 2px 1px 1.5px rgba(0, 0, 0, 0.15);
   &:hover {
-    background-color: #f25e3d;
-    color: #fff;
+    background-color: #545971;
+    color: #f7b916;
   }
 `;
 
@@ -95,13 +97,12 @@ export const BackButtonDiv = styled.div`
   right: 0;
 `;
 
-export const Title = styled.h1`
-  color: #f25e3d;
+export const Title = styled.h2`
+  color: #f7b916;
 `;
 
 export const Card = styled.div`
-  background-color: #006359;
+  background-color: #545971;
   border-radius: 15px;
   width: 30%;
-  color: white;
 `;

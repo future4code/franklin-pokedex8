@@ -3,15 +3,17 @@ import { BASE_URL } from '../../constants/url';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { goToDetailsPage, goToPokedexPage } from '../../routes/coordinator';
-import styled from 'styled-components';
-
-export const PokeCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50vw;
-  height: 100vh;
-`;
+import {
+  PokeCard,
+  PokeList,
+  PokeImg,
+  DivButton,
+  Btn,
+  PokedexButton,
+  Container,
+  Header,
+  ButtonHeader
+} from './styled';
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -45,45 +47,39 @@ const HomePage = () => {
 
   const pokeCard = pokemons.map(pokemon => {
     return (
-      <div className="Poke Card">
-        <img
+      <PokeCard key={pokemon.name}>
+        <PokeImg
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
             pokemon.url.split('/')[6]
           }.svg`}
           alt={pokemon.name}
         />
-        <div>
-          <h2>{pokemon.name}</h2>
-          <div>
-            <button onClick={() => goToPokedexPage(navigate)}>
-              {' '}
-              Adicionar{' '}
-            </button>
-            <button onClick={() => goToDetailsPage(navigate, pokemon.name)}>
-              {' '}
-              Detalhes{' '}
-            </button>
-          </div>
-        </div>
-      </div>
+
+        <h2>{pokemon.name}</h2>
+        <DivButton>
+          <Btn onClick={() => goToPokedexPage(navigate)}>Adicionar</Btn>
+          <Btn onClick={() => goToDetailsPage(navigate, pokemon.name)}>
+            Detalhes
+          </Btn>
+        </DivButton>
+      </PokeCard>
     );
   });
 
   return (
-    <div>
-      <div>
-        {previousPageUrl && (
-          <button onClick={goToPreviousPage}>Anterior</button>
-        )}
-        <button onClick={goToNextPage}>Proxima</button>
-      </div>
+    <Container>
+      <Header>
+        <PokedexButton>
+          <h1>pokedex</h1>
+        </PokedexButton>
+      </Header>
+      <ButtonHeader>
+        {previousPageUrl && <Btn onClick={goToPreviousPage}>Anterior</Btn>}
+        <Btn onClick={goToNextPage}>Proxima</Btn>
+      </ButtonHeader>
 
-      <div className="Header">
-        <button>pokedex</button>
-        Lista Pokemons
-      </div>
-      <div>{pokemons && pokeCard}</div>
-    </div>
+      <PokeList>{pokemons && pokeCard}</PokeList>
+    </Container>
   );
 };
 

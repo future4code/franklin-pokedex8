@@ -4,7 +4,7 @@ export const Container = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  background: #292f4e;
   margin: 0;
   padding: 0;
 `;
@@ -12,7 +12,7 @@ export const Container = styled.ul`
 export const Header = styled.ul`
   display: flex;
   justify-content: space-between;
-  background-color: #93caa8;
+  background: #545971;
   width: 100vw;
 `;
 
@@ -30,7 +30,7 @@ export const PokeList = styled.ul`
   gap: 2rem;
   width: 100vw;
   height: 100vh;
-
+  background: #292f4e;
   margin-top: 2rem;
 `;
 
@@ -40,7 +40,7 @@ export const PokeCard = styled.li`
   justify-content: space-between;
   width: 500px;
   height: 100px;
-  background-color: #93caa8;
+  background-color: #545971;
   padding: 10px;
   color: #fff;
   border-radius: 15px;
@@ -58,23 +58,20 @@ export const DivButton = styled.div`
 `;
 
 export const Btn = styled.button`
-  background-color: #fff;
-  color: #93caa8;
+  background-color: #f7b916;
+  color: #292f4e;
   font-weight: bold;
   border: none;
   border-radius: 18px;
   padding: 10px 20px;
-  box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.15);
-
   &:hover {
-    background-color: #006359;
-    color: #fff;
+    background-color: #dea515;
   }
 `;
 
 export const PokedexButton = styled.button`
-  background-color: #93caa8;
-  color: #f25e3d;
+  background-color: #545971;
+  color: #f7b916;
   font-weight: bold;
   border: none;
   padding: 0;
