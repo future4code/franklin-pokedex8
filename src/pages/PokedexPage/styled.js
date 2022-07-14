@@ -10,9 +10,10 @@ export const Container = styled.ul`
 
 export const Header = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #006359;
   width: 100vw;
+  margin-bottom: 2rem;
 `;
 
 export const PokeList = styled.ul`
@@ -69,8 +70,4 @@ export const PokedexButton = styled.button`
   font-weight: bold;
   border: none;
   padding: 0;
-  &:hover {
-    scale: 1.01;
-    cursor: pointer;
-  }
 `;

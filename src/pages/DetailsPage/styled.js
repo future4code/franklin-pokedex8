@@ -10,11 +10,12 @@ export const Container = styled.ul`
   height: 100vh;
 `;
 
-export const PokeCard = styled.div`
+export const PokeCard = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50vw;
+  max-width: 50vw;
+  min-width: 650px;
   height: 100vh;
 `;
 
@@ -52,13 +53,14 @@ export const MainImg = styled.img`
 export const Description = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 50vw;
+  width: 100%;
 `;
 
 export const DivButton = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: center;
+  margin: 2rem;
 `;
 
 export const PokedexButtonAdd = styled.button`
@@ -97,6 +99,7 @@ export const BackButtonDiv = styled.div`
 
 export const Title = styled.h1`
   color: #f25e3d;
+  text-align: center;
 `;
 
 export const Card = styled.div`
@@ -104,4 +107,6 @@ export const Card = styled.div`
   border-radius: 15px;
   width: 30%;
   color: white;
+  padding: 1rem;
+  box-sizing: border-box;
 `;

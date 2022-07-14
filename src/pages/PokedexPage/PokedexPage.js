@@ -51,7 +51,9 @@ const PokedexPage = () => {
           <h1>pokedex</h1>
         </PokedexButton>
       </Header>
-
+      <Btn onClick={() => goToBackPage(navigate)}>
+        Voltar para lista de Pokemons
+      </Btn>
       <PokeList>{pokedex && pokedexList}</PokeList>
     </Container>
   );

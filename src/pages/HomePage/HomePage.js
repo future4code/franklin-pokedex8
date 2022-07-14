@@ -27,6 +27,10 @@ const HomePage = () => {
   const { setPokedex } = setters;
 
   const addToPokedex = pokemonSelected => {
+    const index = pokemons.findIndex(i => i.name === pokemonSelected.name);
+    const newPokemonList = [...pokemons];
+    newPokemonList.splice(index, 1);
+    setPokemons(newPokemonList);
     const newPokedex = [...pokedex, pokemonSelected];
     setPokedex(newPokedex);
     console.log(pokedex);
@@ -56,36 +60,41 @@ const HomePage = () => {
   }, [currentPageUrl]);
 
   const pokeCard = pokemons.map(pokemon => {
-    return (
-      <PokeCard key={pokemon.name}>
-        <PokeImg
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
-            pokemon.url.split('/')[6]
-          }.svg`}
-          alt={pokemon.name}
-        />
-        <div>
-          <h2>{pokemon.name}</h2>
-          <DivButton>
-            <Btn
-              onClick={() =>
-                addToPokedex({
-                  name: pokemon.name,
-                  url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
-                    pokemon.url.split('/')[6]
-                  }.svg`
-                })
-              }
-            >
-              Adicionar
-            </Btn>
-            <Btn onClick={() => goToDetailsPage(navigate, pokemon.name)}>
-              Detalhes
-            </Btn>
-          </DivButton>
-        </div>
-      </PokeCard>
+    const foundInPokedex = pokedex.find(
+      element => element.name === pokemon.name
     );
+    if (!foundInPokedex) {
+      return (
+        <PokeCard key={pokemon.name}>
+          <PokeImg
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
+              pokemon.url.split('/')[6]
+            }.svg`}
+            alt={pokemon.name}
+          />
+          <div>
+            <h2>{pokemon.name}</h2>
+            <DivButton>
+              <Btn
+                onClick={() =>
+                  addToPokedex({
+                    name: pokemon.name,
+                    url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
+                      pokemon.url.split('/')[6]
+                    }.svg`
+                  })
+                }
+              >
+                Adicionar
+              </Btn>
+              <Btn onClick={() => goToDetailsPage(navigate, pokemon.name)}>
+                Detalhes
+              </Btn>
+            </DivButton>
+          </div>
+        </PokeCard>
+      );
+    }
   });
 
   return (

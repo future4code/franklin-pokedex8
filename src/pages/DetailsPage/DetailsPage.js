@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../constants/url';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -19,13 +19,15 @@ import {
   Card
 } from './styled';
 import { ButtonDefault } from '../../components/ButtonDefault';
+import { GlobalStateContext } from '../../context/global/GlobalStateContext';
 
 const DetailsPage = () => {
   const [pokemonStats, setPokemonStats] = useState([]);
   const [pokemonType, setPokemonType] = useState([]);
   const [pokemonMoves, setPokemonMoves] = useState([]);
   const [id, setId] = useState('');
-
+  const { state } = useContext(GlobalStateContext);
+  const { pokedex } = state;
   const navigate = useNavigate();
   const params = useParams();
   // console.log(params)
@@ -48,6 +50,10 @@ const DetailsPage = () => {
       });
   };
 
+  const pokemonInPokedex = pokedex.find(
+    pokemon => pokemon.name === params.idOrName
+  );
+
   useEffect(getPokemon, []);
 
   return (
@@ -68,8 +74,11 @@ const DetailsPage = () => {
           </BackButtonDiv>
         </MainContainer>
         <DivButton>
-          <PokedexButtonAdd> Adicionar na Pokedex</PokedexButtonAdd>
-          <PokedexButtonDelete> Remover na Pokedex</PokedexButtonDelete>
+          {pokemonInPokedex == undefined ? (
+            <PokedexButtonAdd> Adicionar na Pokedex</PokedexButtonAdd>
+          ) : (
+            <PokedexButtonDelete> Remover da Pokedex</PokedexButtonDelete>
+          )}
         </DivButton>
         <div>
           <img
