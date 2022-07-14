@@ -1,6 +1,6 @@
-import './App.css';
 import { Router } from './routes/router';
 import styled from 'styled-components';
+import { GlobalState } from './context/global/GlobalState';
 
 export const MainContent = styled.div`
   display: flex;
@@ -12,9 +12,11 @@ export const MainContent = styled.div`
 
 function App() {
   return (
-    <MainContent className="App">
-      <Router />
-    </MainContent>
+    <GlobalState>
+      <MainContent>
+        <Router />
+      </MainContent>
+    </GlobalState>
   );
 }
 

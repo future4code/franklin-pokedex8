@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BASE_URL } from '../../constants/url';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,7 @@ import {
   Header,
   ButtonHeader
 } from './styled';
+import { GlobalStateContext } from '../../context/global/GlobalStateContext';
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -21,6 +22,15 @@ const HomePage = () => {
   const [nextPageUrl, setNextPageUrl] = useState();
   const [previousPageUrl, setPreviousPageUrl] = useState();
   const navigate = useNavigate();
+  const { state, setters } = useContext(GlobalStateContext);
+  const { pokedex } = state;
+  const { setPokedex } = setters;
+
+  const addToPokedex = pokemonSelected => {
+    const newPokedex = [...pokedex, pokemonSelected];
+    setPokedex(newPokedex);
+    console.log(pokedex);
+  };
 
   const goToNextPage = () => {
     setCurrentPageUrl(nextPageUrl);
@@ -54,14 +64,26 @@ const HomePage = () => {
           }.svg`}
           alt={pokemon.name}
         />
-
-        <h2>{pokemon.name}</h2>
-        <DivButton>
-          <Btn onClick={() => goToPokedexPage(navigate)}>Adicionar</Btn>
-          <Btn onClick={() => goToDetailsPage(navigate, pokemon.name)}>
-            Detalhes
-          </Btn>
-        </DivButton>
+        <div>
+          <h2>{pokemon.name}</h2>
+          <DivButton>
+            <Btn
+              onClick={() =>
+                addToPokedex({
+                  name: pokemon.name,
+                  url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
+                    pokemon.url.split('/')[6]
+                  }.svg`
+                })
+              }
+            >
+              Adicionar
+            </Btn>
+            <Btn onClick={() => goToDetailsPage(navigate, pokemon.name)}>
+              Detalhes
+            </Btn>
+          </DivButton>
+        </div>
       </PokeCard>
     );
   });
@@ -69,7 +91,7 @@ const HomePage = () => {
   return (
     <Container>
       <Header>
-        <PokedexButton>
+        <PokedexButton onClick={() => goToPokedexPage(navigate)}>
           <h1>pokedex</h1>
         </PokedexButton>
       </Header>
