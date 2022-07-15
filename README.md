@@ -1,7 +1,6 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- André Santolin
 - Luan Wallace Pereira
 - Nicole Rafaella Vieira Peiker
 
