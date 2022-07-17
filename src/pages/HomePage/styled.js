@@ -12,7 +12,7 @@ export const Header = styled.ul`
   display: flex;
   justify-content: space-between;
   background-color: #006359;
-  width: 100vw;
+   width: 100vw;
 `;
 
 export const ButtonHeader = styled.ul`

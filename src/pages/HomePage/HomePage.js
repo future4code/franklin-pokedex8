@@ -18,6 +18,7 @@ import { GlobalStateContext } from '../../context/global/GlobalStateContext';
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [pokemonType, setPokemonType] = useState([]);
   const [currentPageUrl, setCurrentPageUrl] = useState(BASE_URL);
   const [nextPageUrl, setNextPageUrl] = useState();
   const [previousPageUrl, setPreviousPageUrl] = useState();
@@ -44,6 +45,7 @@ const HomePage = () => {
     setCurrentPageUrl(previousPageUrl);
   };
 
+
   useEffect(() => {
     axios
       .get(currentPageUrl)
@@ -52,10 +54,11 @@ const HomePage = () => {
         setNextPageUrl(response.data.next);
         setPreviousPageUrl(response.data.previous);
         setPokemons(response.data.results);
+        setPokemonType(response.data.types);
+        console.log(response.data.types.type.name);
       })
       .catch(error => {
         console.log(error);
-        alert('Ocorreu um erro, tente novamente');
       });
   }, [currentPageUrl]);
 
@@ -96,6 +99,7 @@ const HomePage = () => {
       );
     }
   });
+
 
   return (
     <Container>

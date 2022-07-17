@@ -50,12 +50,6 @@ export const MainImg = styled.img`
   min-width: 35%;
 `;
 
-export const Description = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
 export const DivButton = styled.div`
   display: flex;
   width: 100%;
@@ -100,6 +94,15 @@ export const BackButtonDiv = styled.div`
 export const Title = styled.h1`
   color: #f25e3d;
   text-align: center;
+`;
+
+export const CardStats = styled.div`
+  background-color: #006359;
+  border-radius: 15px;
+  width: 100%;
+  color: white;
+  padding: 1rem;
+  box-sizing: border-box;
 `;
 
 export const Card = styled.div`
