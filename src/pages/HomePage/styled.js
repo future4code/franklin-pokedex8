@@ -13,6 +13,18 @@ export const Header = styled.ul`
   justify-content: space-between;
   background-color: #006359;
    width: 100vw;
+   `;
+
+export const PokedexButton = styled.button`
+  background-color: #006359;
+  color: #f25e3d;
+  font-weight: bold;
+  border: none;
+  padding: 0;
+  &:hover {
+    scale: 1.01;
+    cursor: pointer;
+  }
 `;
 
 export const ButtonHeader = styled.ul`
@@ -70,14 +82,7 @@ export const Btn = styled.button`
   }
 `;
 
-export const PokedexButton = styled.button`
-  background-color: #006359;
-  color: #f25e3d;
-  font-weight: bold;
-  border: none;
-  padding: 0;
-  &:hover {
-    scale: 1.01;
-    cursor: pointer;
-  }
-`;
+export const PokemonsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`

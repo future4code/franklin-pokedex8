@@ -14,8 +14,8 @@ export const PokeCard = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 50vw;
-  min-width: 650px;
+  max-width: 70vw;
+  min-width: 700px;
   height: 100vh;
 `;
 
@@ -23,15 +23,15 @@ export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   position: relative;
 `;
 
 export const PokemonBackground = styled.div`
   border-radius: 0 0 50% 50%;
   background-color: #93caa8;
-  width: 700px;
-  height: 400px;
+  width: 1000px;
+  height: 500px;
 `;
 
 export const Name = styled.h1`
@@ -91,9 +91,15 @@ export const BackButtonDiv = styled.div`
   right: 0;
 `;
 
-export const Title = styled.h1`
-  color: #f25e3d;
-  text-align: center;
+export const CardType = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 0;
 `;
 
 export const CardStats = styled.div`
@@ -103,13 +109,11 @@ export const CardStats = styled.div`
   color: white;
   padding: 1rem;
   box-sizing: border-box;
+  margin: 40px 0 60px;
 `;
 
-export const Card = styled.div`
-  background-color: #006359;
-  border-radius: 15px;
-  width: 30%;
-  color: white;
-  padding: 1rem;
-  box-sizing: border-box;
-`;
+export const CardMoves = styled.div`
+  display: flex;
+  gap: 50px;
+  margin: 30px;
+`

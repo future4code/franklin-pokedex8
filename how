@@ -1,0 +1,137 @@
+[33mcommit 5adf51a5b1dc015a2b375397fb6b5f4e302aa1c5[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Luan Wallace <w.luan@yahoo.com>
+Date:   Sat Jul 16 23:18:53 2022 -0300
+
+    [fix] Add pokemons to pokedex at DetailsPage
+
+[33mcommit 3f4fe415684504a952f59527645d3cad0194bbcd[m
+Author: Luan Wallace <79777131+DevLuanWallace@users.noreply.github.com>
+Date:   Fri Jul 15 19:59:36 2022 -0300
+
+    Update README.md
+
+[33mcommit 3c9f1f3bc47b188e63002842ca643d858c8b26ec[m
+Author: Nicole Rafaella Vieira Peiker <nicolervpeiker@gmail.com>
+Date:   Thu Jul 14 11:22:02 2022 -0300
+
+    [feat] pokedex project 100% functional
+
+[33mcommit 510d11c825a4b143bc1376ae8e63e559555d2b8b[m
+Author: Nicole Rafaella Vieira Peiker <nicolervpeiker@gmail.com>
+Date:   Wed Jul 13 22:02:29 2022 -0300
+
+    [feat] pokemons added at pokedex 100%
+
+[33mcommit a84d5e3f5e1e4da85cbd2a1881dfb241a249446c[m
+Author: Nicole Rafaella Vieira Peiker <nicolervpeiker@gmail.com>
+Date:   Tue Jul 12 11:42:10 2022 -0300
+
+    [style] home and details suggest second color palette
+
+[33mcommit 030c6844c1ad1f1e8ebfe474b1685fe2ab54be26[m
+Author: Nicole Rafaella Vieira Peiker <nicolervpeiker@gmail.com>
+Date:   Mon Jul 11 22:11:24 2022 -0300
+
+    [style] details page 50% done.
+
+[33mcommit da53d29210b9db3569f4f754403d3019a11f63b1[m
+Author: Luan Wallace Pereira <luan.wallace@grupoboticario.com.br>
+Date:   Sat Jul 9 22:10:02 2022 -0300
+
+    [fix] add pokemon pictures at DetailsPage
+
+[33mcommit 067a7a8e78a86aa6a9dfd1598338fc9c6ad1ace8[m
+Author: Luan Wallace Pereira <luan.wallace@grupoboticario.com.br>
+Date:   Sat Jul 9 21:38:17 2022 -0300
+
+    [feat] details page 100% functional
+
+[33mcommit eaf5e82d74b47f904261f83dd5f0eb167c130d83[m
+Author: Luan Wallace Pereira <luan.wallace@grupoboticario.com.br>
+Date:   Sat Jul 9 20:20:02 2022 -0300
+
+    [feat] try to fix a render bug
+
+[33mcommit 93212d9a09b807d16debdcd0243d126b2b3a6201[m
+Author: Luan Wallace <w.luan@yahoo.com>
+Date:   Sat Jul 9 19:17:52 2022 -0300
+
+    [FEAT] Details Page progress
+
+[33mcommit b522c68793f069892cf29902715340ff3090ac8d[m
+Author: Luan Wallace <w.luan@yahoo.com>
+Date:   Sat Jul 9 17:46:23 2022 -0300
+
+    [FEAT] Routes and Axios 90% done
+
+[33mcommit 3c8dcad37ea20ec8c8667bcbd45eb1bfd55d225d[m
+Author: Nicole Rafaella Vieira Peiker <nicolervpeiker@gmail.com>
+Date:   Fri Jul 8 19:10:09 2022 -0300
+
+    create a call api to list pokemons with images
+
+[33mcommit 52b0334d624eee68904b7431f45ca75e54e3ff0d[m
+Author: Luan Wallace <w.luan@yahoo.com>
+Date:   Thu Jul 7 22:51:01 2022 -0300
+
+    [feat] initial commit
+
+[33mcommit acd6ba5de0eca773e55bce74369823a167d4d325[m
+Author: Luan Wallace <79777131+DevLuanWallace@users.noreply.github.com>
+Date:   Thu Jul 7 22:01:21 2022 -0300
+
+    Delete package-lock.json
+
+[33mcommit 015190f1870ae59b32a198090689e1e84640019d[m
+Author: Luan Wallace <79777131+DevLuanWallace@users.noreply.github.com>
+Date:   Thu Jul 7 22:01:12 2022 -0300
+
+    Delete .gitignore
+
+[33mcommit b60c50c8a14d7324df94a412ce970b6e21c3231b[m
+Author: Nicole Peiker <65312009+nicolepeiker@users.noreply.github.com>
+Date:   Thu Jul 7 21:59:16 2022 -0300
+
+    Delete package.json
+
+[33mcommit 391bb07daa7a411cc0418f9f884a6a334d88ce9a[m
+Author: Nicole Peiker <65312009+nicolepeiker@users.noreply.github.com>
+Date:   Thu Jul 7 21:58:49 2022 -0300
+
+    Delete pokedex directory
+
+[33mcommit c4e7902f469f22db87e4323f8eb115ba85dcb881[m
+Author: Nicole Rafaella Vieira Peiker <nicolervpeiker@gmail.com>
+Date:   Thu Jul 7 13:56:44 2022 -0300
+
+    requisição da lista de pokemons
+
+[33mcommit e3a4b6f1aa50b91f0db22f9618b6a8855adc7c23[m
+Author: Luan Wallace <w.luan@yahoo.com>
+Date:   Wed Jul 6 22:08:40 2022 -0300
+
+    [FEAT] Layout created
+
+[33mcommit c22b39a8586d2a2465a6e09e53efe7802f3d06b7[m
+Author: Nicole Rafaella Vieira Peiker <nicolervpeiker@gmail.com>
+Date:   Wed Jul 6 20:30:24 2022 -0300
+
+    criação das rotas
+
+[33mcommit 6ae9eb75bea0f027a417dc6dd09ae2fa294f8138[m
+Author: Luan Wallace <w.luan@yahoo.com>
+Date:   Tue Jul 5 21:06:18 2022 -0300
+
+    [FEAT] Pages created
+
+[33mcommit c8d9a6daebb85f701952b7cef6f1ebfa56090094[m
+Author: Guilherme Carvalho <97231585+LbnGui@users.noreply.github.com>
+Date:   Tue Jul 5 10:36:07 2022 -0300
+
+    Update README.md
+
+[33mcommit c6a9878dfed573eb763d417cbe0eee22386241dc[m
+Author: Guilherme Carvalho <97231585+LbnGui@users.noreply.github.com>
+Date:   Tue Jul 5 10:34:07 2022 -0300
+
+    Initial commit

@@ -1,6 +1,8 @@
 import { Router } from './routes/router';
 import styled from 'styled-components';
 import { GlobalState } from './context/global/GlobalState';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export const MainContent = styled.div`
   display: flex;

@@ -12,7 +12,8 @@ import {
   PokedexButton,
   Container,
   Header,
-  ButtonHeader
+  ButtonHeader,
+  PokemonsContainer
 } from './styled';
 import { GlobalStateContext } from '../../context/global/GlobalStateContext';
 
@@ -112,8 +113,9 @@ const HomePage = () => {
         {previousPageUrl && <Btn onClick={goToPreviousPage}>Anterior</Btn>}
         <Btn onClick={goToNextPage}>Proxima</Btn>
       </ButtonHeader>
-
-      <PokeList>{pokemons && pokeCard}</PokeList>
+      <PokemonsContainer>
+        <PokeList>{pokemons && pokeCard}</PokeList>
+      </PokemonsContainer>
     </Container>
   );
 };

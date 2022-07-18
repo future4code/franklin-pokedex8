@@ -16,9 +16,10 @@ import {
   PokedexButtonDelete,
   BackButtonDiv,
   Container,
-  Title,
   Card,
   CardStats,
+  CardMoves,
+  CardType,
 } from "./styled";
 import { ButtonDefault } from "../../components/ButtonDefault";
 import { GlobalStateContext } from "../../context/global/GlobalStateContext";
@@ -175,9 +176,6 @@ const pokemonInPokedex = pokedex.find(
               onClick={() => goToBackPage(navigate)}
               name="Voltar"
             />
-          <ProgressBar
-             now={60}
-          />
           </BackButtonDiv>
         </MainContainer>
         <DivButton>
@@ -201,17 +199,15 @@ const pokemonInPokedex = pokedex.find(
             </PokedexButtonDelete>
           )}
         </DivButton>
-        <Card>
+        <CardType>
           {pokemonType.map((pokemon) => {
             return (
-              <div key={pokemon.type.name}>
-                <p>
-                  <strong>{pokemon.type.name} </strong>
-                </p>
+              <div key={pokemon.type.name} >
+                {pokemon.type.name}
               </div>
             );
           })}
-        </Card>
+        </CardType>
         <div>
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
@@ -223,29 +219,32 @@ const pokemonInPokedex = pokedex.find(
           />
         </div>
         <CardStats>
-          <Title>STATS</Title>
           {pokemonStats.map((pokemon) => {
             return (
-              <div key={pokemon.stat.name}>
-                <p>
-                  <strong>{pokemon.stat.name}: </strong>
-                </p>
+              <div key={pokemon.stat.name} style={{display:"flex", gap:"20px", justifyContent: "flex-end" }}>
+                <strong>{pokemon.stat.name}: </strong>
+                <ProgressBar
+                  style={{width:"80%",height:"30px"}}
+                  now={pokemon.base_stat}
+                  variant="warning"
+                />
+                <p>{pokemon.base_stat}</p>
               </div>
             );
           })}
         </CardStats>
-        <Card>
-          <Title>MOVES</Title>
+          <h1>MOVES</h1>
+        <CardMoves>
           {pokemonMoves.slice(0, 4).map((pokemon) => {
             return (
-              <div key={pokemon.move.name}>
+              <div key={pokemon.move.name} >
                 <p>
                   <strong>{pokemon.move.name} </strong>
                 </p>
               </div>
             );
           })}
-        </Card>
+        </CardMoves>
       </PokeCard>
     </Container>
   );
