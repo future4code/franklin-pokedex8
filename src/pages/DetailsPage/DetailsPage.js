@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { BASE_URL } from "../../constants/url";
-import { useParams, useNavigate } from "react-router-dom";
-import { goToBackPage } from "../../routes/coordinator";
+import { BASE_URL } from '../../constants/url';
+import { useParams, useNavigate } from 'react-router-dom';
+import { goToBackPage } from '../../routes/coordinator';
 import {
   PokeCard,
   MainContainer,
@@ -19,144 +19,140 @@ import {
   Card,
   CardStats,
   CardMoves,
-  CardType,
-} from "./styled";
-import { ButtonDefault } from "../../components/ButtonDefault";
-import { GlobalStateContext } from "../../context/global/GlobalStateContext";
+  CardType
+} from './styled';
+import { ButtonDefault } from '../../components/ButtonDefault';
+import { GlobalStateContext } from '../../context/global/GlobalStateContext';
 
 const DetailsPage = () => {
   const [pokemonStats, setPokemonStats] = useState([]);
   const [pokemonType, setPokemonType] = useState([]);
   const [pokemonMoves, setPokemonMoves] = useState([]);
   const [pokemons, setPokemons] = useState([]);
-  const [id, setId] = useState("");
+  const [id, setId] = useState('');
   const { state, setters } = useContext(GlobalStateContext);
   const { pokedex } = state;
   const { setPokedex } = setters;
   const navigate = useNavigate();
   const params = useParams();
-  // console.log(params)
 
   const getPokemon = () => {
     axios
       .get(`${BASE_URL}/${params.idOrName}`)
-      .then((response) => {
+      .then(response => {
         setPokemonStats(response.data.stats);
-        // console.log(response.data.stats)
+
         setPokemonType(response.data.types);
-        console.log(response.data.types)
+
         setPokemonMoves(response.data.moves);
-        // console.log(response.data.moves)
+
         setId(response.data.id);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
 
-
   const cardColors = [
     {
-      type:"bug",
-      color:"green"
+      type: 'bug',
+      color: 'green'
     },
     {
-      type:"electric",
-      color:"yellow"
+      type: 'electric',
+      color: 'yellow'
     },
     {
-      type:"fire",
-      color:"red"
+      type: 'fire',
+      color: 'red'
     },
     {
-      type:"grass",
-      color:"green"
+      type: 'grass',
+      color: 'green'
     },
     {
-      type:"normal",
-      color:"lightgray"
+      type: 'normal',
+      color: 'lightgray'
     },
     {
-      type:"rock",
-      color:"brown"
+      type: 'rock',
+      color: 'brown'
     },
     {
-      type:"dark",
-      color:"brown"
+      type: 'dark',
+      color: 'brown'
     },
     {
-      type:"fairy",
-      color:"pink"
+      type: 'fairy',
+      color: 'pink'
     },
     {
-      type:"flying",
-      color:"blue"
+      type: 'flying',
+      color: 'blue'
     },
     {
-      type:"ground",
-      color:"brown"
+      type: 'ground',
+      color: 'brown'
     },
     {
-      type:"poison",
-      color:"purple"
+      type: 'poison',
+      color: 'purple'
     },
     {
-      type:"steel",
-      color:"lightgray"
+      type: 'steel',
+      color: 'lightgray'
     },
     {
-      type:"dragon",
-      color:"cyan"
+      type: 'dragon',
+      color: 'cyan'
     },
     {
-      type:"fighting",
-      color:"darkred"
+      type: 'fighting',
+      color: 'darkred'
     },
     {
-      type:"ghost",
-      color:"cyan"
+      type: 'ghost',
+      color: 'cyan'
     },
     {
-      type:"ice",
-      color:"lightcyan"
+      type: 'ice',
+      color: 'lightcyan'
     },
     {
-      type:"psychic",
-      color:"salmon"
+      type: 'psychic',
+      color: 'salmon'
     },
     {
-      type:"water",
-      color:"blue"
+      type: 'water',
+      color: 'blue'
     }
-  ]
-
+  ];
 
   //  const cardColor1 = cardColors.find(poke => poke.type == type).color
   //  const cardColor2 = cardColors.find(poke => poke.type == type) != (null || undefined) ? cardColors.find(poke => poke.type == type).color : "gray"
 
   // background-color: linear-gradient(159deg, {cardColor1}, {cardColor2})
 
-
-const pokemonInPokedex = pokedex.find(
-    (pokemon) => pokemon.name === params.idOrName
+  const pokemonInPokedex = pokedex.find(
+    pokemon => pokemon.name === params.idOrName
   );
 
-  const addToPokedex = (pokemonSelected) => {
-    const index = pokemons.findIndex((i) => i.name === pokemonSelected.name);
+  const addToPokedex = pokemonSelected => {
+    const index = pokemons.findIndex(i => i.name === pokemonSelected.name);
     const newPokemonList = [...pokemons];
     newPokemonList.splice(index, 1);
     setPokemons(newPokemonList);
     const newPokedex = [...pokedex, pokemonSelected];
     setPokedex(newPokedex);
-    goToBackPage()
+    goToBackPage(navigate);
   };
 
-  const removeFromPokedex = (pokemonSelected) => {
-    const index = pokedex.findIndex((i) => i.name === pokemonSelected.name);
+  const removeFromPokedex = pokemonSelected => {
+    const index = pokedex.findIndex(i => i.name === pokemonSelected.name);
     const newPokedex = [...pokedex];
     newPokedex.splice(index, 1);
     setPokedex(newPokedex);
-    goToBackPage()
+    goToBackPage(navigate);
   };
 
   useEffect(getPokemon, []);
@@ -179,7 +175,7 @@ const pokemonInPokedex = pokedex.find(
           </BackButtonDiv>
         </MainContainer>
         <DivButton>
-        {pokemonInPokedex == undefined ? (
+          {pokemonInPokedex == undefined ? (
             <PokedexButtonAdd
               onClick={() =>
                 addToPokedex({
@@ -188,24 +184,19 @@ const pokemonInPokedex = pokedex.find(
                 })
               }
             >
-                  Adicionar na Pokedex
+              Adicionar na Pokedex
             </PokedexButtonAdd>
           ) : (
             <PokedexButtonDelete
               onClick={() => removeFromPokedex({ name: params.idOrName })}
             >
-
               Remover da Pokedex
             </PokedexButtonDelete>
           )}
         </DivButton>
         <CardType>
-          {pokemonType.map((pokemon) => {
-            return (
-              <div key={pokemon.type.name} >
-                {pokemon.type.name}
-              </div>
-            );
+          {pokemonType.map(pokemon => {
+            return <div key={pokemon.type.name}>{pokemon.type.name}</div>;
           })}
         </CardType>
         <div>
@@ -219,12 +210,19 @@ const pokemonInPokedex = pokedex.find(
           />
         </div>
         <CardStats>
-          {pokemonStats.map((pokemon) => {
+          {pokemonStats.map(pokemon => {
             return (
-              <div key={pokemon.stat.name} style={{display:"flex", gap:"20px", justifyContent: "flex-end" }}>
+              <div
+                key={pokemon.stat.name}
+                style={{
+                  display: 'flex',
+                  gap: '20px',
+                  justifyContent: 'flex-end'
+                }}
+              >
                 <strong>{pokemon.stat.name}: </strong>
                 <ProgressBar
-                  style={{width:"80%",height:"30px"}}
+                  style={{ width: '80%', height: '30px' }}
                   now={pokemon.base_stat}
                   variant="warning"
                 />
@@ -233,11 +231,11 @@ const pokemonInPokedex = pokedex.find(
             );
           })}
         </CardStats>
-          <h1>MOVES</h1>
+        <h1>MOVES</h1>
         <CardMoves>
-          {pokemonMoves.slice(0, 4).map((pokemon) => {
+          {pokemonMoves.slice(0, 4).map(pokemon => {
             return (
-              <div key={pokemon.move.name} >
+              <div key={pokemon.move.name}>
                 <p>
                   <strong>{pokemon.move.name} </strong>
                 </p>
