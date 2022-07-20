@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import ProgressBar from "react-bootstrap/ProgressBar";
 import { BASE_URL } from "../../constants/url";
 import { useParams, useNavigate } from "react-router-dom";
 import { goToBackPage } from "../../routes/coordinator";
@@ -44,7 +44,7 @@ const DetailsPage = () => {
         setPokemonStats(response.data.stats);
         // console.log(response.data.stats)
         setPokemonType(response.data.types);
-        console.log(response.data.types)
+        // console.log(response.data.types);
         setPokemonMoves(response.data.moves);
         // console.log(response.data.moves)
         setId(response.data.id);
@@ -54,90 +54,7 @@ const DetailsPage = () => {
       });
   };
 
-
-  const cardColors = [
-    {
-      type:"bug",
-      color:"green"
-    },
-    {
-      type:"electric",
-      color:"yellow"
-    },
-    {
-      type:"fire",
-      color:"red"
-    },
-    {
-      type:"grass",
-      color:"green"
-    },
-    {
-      type:"normal",
-      color:"lightgray"
-    },
-    {
-      type:"rock",
-      color:"brown"
-    },
-    {
-      type:"dark",
-      color:"brown"
-    },
-    {
-      type:"fairy",
-      color:"pink"
-    },
-    {
-      type:"flying",
-      color:"blue"
-    },
-    {
-      type:"ground",
-      color:"brown"
-    },
-    {
-      type:"poison",
-      color:"purple"
-    },
-    {
-      type:"steel",
-      color:"lightgray"
-    },
-    {
-      type:"dragon",
-      color:"cyan"
-    },
-    {
-      type:"fighting",
-      color:"darkred"
-    },
-    {
-      type:"ghost",
-      color:"cyan"
-    },
-    {
-      type:"ice",
-      color:"lightcyan"
-    },
-    {
-      type:"psychic",
-      color:"salmon"
-    },
-    {
-      type:"water",
-      color:"blue"
-    }
-  ]
-
-
-  //  const cardColor1 = cardColors.find(poke => poke.type == type).color
-  //  const cardColor2 = cardColors.find(poke => poke.type == type) != (null || undefined) ? cardColors.find(poke => poke.type == type).color : "gray"
-
-  // background-color: linear-gradient(159deg, {cardColor1}, {cardColor2})
-
-
-const pokemonInPokedex = pokedex.find(
+  const pokemonInPokedex = pokedex.find(
     (pokemon) => pokemon.name === params.idOrName
   );
 
@@ -148,7 +65,7 @@ const pokemonInPokedex = pokedex.find(
     setPokemons(newPokemonList);
     const newPokedex = [...pokedex, pokemonSelected];
     setPokedex(newPokedex);
-    goToBackPage()
+    goToBackPage();
   };
 
   const removeFromPokedex = (pokemonSelected) => {
@@ -156,8 +73,9 @@ const pokemonInPokedex = pokedex.find(
     const newPokedex = [...pokedex];
     newPokedex.splice(index, 1);
     setPokedex(newPokedex);
-    goToBackPage()
+    goToBackPage();
   };
+
 
   useEffect(getPokemon, []);
 
@@ -166,7 +84,7 @@ const pokemonInPokedex = pokedex.find(
       <PokeCard>
         <MainContainer>
           <PokemonBackground />
-          <Name>{params.idOrName}</Name>
+          <Name>#{params.idOrName}</Name>
           <MainImg
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
             alt={params.idOrName}
@@ -179,33 +97,28 @@ const pokemonInPokedex = pokedex.find(
           </BackButtonDiv>
         </MainContainer>
         <DivButton>
-        {pokemonInPokedex == undefined ? (
+          {pokemonInPokedex == undefined ? (
             <PokedexButtonAdd
               onClick={() =>
                 addToPokedex({
                   name: params.idOrName,
-                  url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+                  url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`,
                 })
               }
             >
-                  Adicionar na Pokedex
+              Adicionar na Pokedex
             </PokedexButtonAdd>
           ) : (
             <PokedexButtonDelete
               onClick={() => removeFromPokedex({ name: params.idOrName })}
             >
-
               Remover da Pokedex
             </PokedexButtonDelete>
           )}
         </DivButton>
         <CardType>
           {pokemonType.map((pokemon) => {
-            return (
-              <div key={pokemon.type.name} >
-                {pokemon.type.name}
-              </div>
-            );
+            return <div key={pokemon.type.name}>{pokemon.type.name}</div>;
           })}
         </CardType>
         <div>
@@ -221,10 +134,17 @@ const pokemonInPokedex = pokedex.find(
         <CardStats>
           {pokemonStats.map((pokemon) => {
             return (
-              <div key={pokemon.stat.name} style={{display:"flex", gap:"20px", justifyContent: "flex-end" }}>
+              <div
+                key={pokemon.stat.name}
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  justifyContent: "flex-end",
+                }}
+              >
                 <strong>{pokemon.stat.name}: </strong>
                 <ProgressBar
-                  style={{width:"80%",height:"30px"}}
+                  style={{ width: "80%", height: "25px" }}
                   now={pokemon.base_stat}
                   variant="warning"
                 />
@@ -233,11 +153,11 @@ const pokemonInPokedex = pokedex.find(
             );
           })}
         </CardStats>
-          <h1>MOVES</h1>
+        <h1>MOVES</h1>
         <CardMoves>
           {pokemonMoves.slice(0, 4).map((pokemon) => {
             return (
-              <div key={pokemon.move.name} >
+              <div key={pokemon.move.name}>
                 <p>
                   <strong>{pokemon.move.name} </strong>
                 </p>

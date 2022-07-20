@@ -12,6 +12,8 @@ import {
   Container,
   Header
 } from './styled';
+import pokedexLogo from '../../assets/pokedexLogo.png'
+
 
 const PokedexPage = () => {
   const navigate = useNavigate();
@@ -48,7 +50,10 @@ const PokedexPage = () => {
     <Container>
       <Header>
         <PokedexButton>
-          <h1>pokedex</h1>
+          <img 
+            style={{height:"80px", margin: "20px"}}
+            src={pokedexLogo}
+          />
         </PokedexButton>
       </Header>
       <Btn onClick={() => goToBackPage(navigate)}>

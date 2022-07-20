@@ -15,6 +15,7 @@ import {
   ButtonHeader,
   PokemonsContainer
 } from './styled';
+import pokedexLogo from '../../assets/pokedexLogo.png'
 import { GlobalStateContext } from '../../context/global/GlobalStateContext';
 
 const HomePage = () => {
@@ -67,6 +68,7 @@ const HomePage = () => {
     const foundInPokedex = pokedex.find(
       element => element.name === pokemon.name
     );
+
     if (!foundInPokedex) {
       return (
         <PokeCard key={pokemon.name}>
@@ -77,7 +79,8 @@ const HomePage = () => {
             alt={pokemon.name}
           />
           <div>
-            <h2>{pokemon.name}</h2>
+            <h2 style={{textTransform: "capitalize"}}
+            >#{pokemon.name}</h2>
             <DivButton>
               <Btn
                 onClick={() =>
@@ -106,9 +109,16 @@ const HomePage = () => {
     <Container>
       <Header>
         <PokedexButton onClick={() => goToPokedexPage(navigate)}>
-          <h1>pokedex</h1>
+          <img style={{height:"80px", margin: "20px"}}
+          src={pokedexLogo} />
         </PokedexButton>
       </Header>
+
+      <div>
+        <h1> Escolha o Pokemon mais forte para adicionar na sua Pokedex !</h1>
+        <h2> Qual Pokemon você está procurando? </h2>
+      </div>
+
       <ButtonHeader>
         {previousPageUrl && <Btn onClick={goToPreviousPage}>Anterior</Btn>}
         <Btn onClick={goToNextPage}>Proxima</Btn>

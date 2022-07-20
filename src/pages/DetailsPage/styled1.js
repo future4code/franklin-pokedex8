@@ -95,6 +95,7 @@ export const BackButtonDiv = styled.div`
   position: absolute;
   top: 10px;
   right: 0;
+  
 `;
 
 export const Title = styled.h2`

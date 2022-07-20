@@ -6,9 +6,11 @@ const Btn = styled.button`
   color: #93caa8;
   font-weight: bold;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px 20px;
   box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.15);
+  transition: .6s;
+
   &:hover {
     background-color: #006359;
     color: #fff;
