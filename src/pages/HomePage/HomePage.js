@@ -49,7 +49,6 @@ const HomePage = () => {
     setCurrentPageUrl(previousPageUrl);
   };
 
-
   useEffect(() => {
     axios
       .get(currentPageUrl)
@@ -103,7 +102,6 @@ const HomePage = () => {
       );
     }
   });
-
 
   return (
     <Container>
