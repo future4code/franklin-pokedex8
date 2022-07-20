@@ -11,7 +11,8 @@ export const Container = styled.ul`
 export const Header = styled.ul`
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: black;
+  box-shadow: 1px 2px 3px 5px rgba(0, 0, 0, 0.15);
    width: 100vw;
    `;
 
@@ -46,7 +47,8 @@ export const PokeCard = styled.li`
   width: 570px;
   height: 130px;
 
-  background-color: #93caa8;
+  background: rgb(135,45,45);
+  background: linear-gradient(162deg, rgba(135,45,45,1) 0%, rgba(252,159,159,1) 100%);
   color: #fff;
 `;
 

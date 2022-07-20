@@ -37,12 +37,12 @@ export const PokemonBackground = styled.div`
 
 export const Name = styled.h1`
   position: absolute;
-  color: #fff;
+  color: #fc9f9f;
   top: 2%;
   right: 0;
-  opacity: .3;
+  opacity: .32;
   text-transform: uppercase;
-  font-size: 120px;
+  font-size: 110px;
   font-weight: 800;
   margin: 0 15px;
 
