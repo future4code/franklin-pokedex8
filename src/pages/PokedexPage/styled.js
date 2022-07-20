@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.ul`
   display: flex;
@@ -6,15 +6,15 @@ export const Container = styled.ul`
   align-items: center;
   margin: 0;
   padding: 0;
-  `;
+`;
 
 export const Header = styled.ul`
-display: flex;
+  display: flex;
   justify-content: space-between;
   background-color: black;
   box-shadow: 1px 2px 3px 5px rgba(0, 0, 0, 0.15);
   width: 100vw;
-  `
+`;
 
 export const PokedexButton = styled.button`
   border: none;
@@ -27,8 +27,8 @@ export const PokedexButton = styled.button`
 `;
 
 export const PokeList = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   width: 100vw;
   height: 100vh;
@@ -47,8 +47,12 @@ export const PokeCard = styled.li`
   width: 570px;
   height: 130px;
 
-  background: rgb(135,45,45);
-  background: linear-gradient(162deg, rgba(135,45,45,1) 0%, rgba(252,159,159,1) 100%);
+  background: rgb(135, 45, 45);
+  background: linear-gradient(
+    162deg,
+    rgba(135, 45, 45, 1) 0%,
+    rgba(252, 159, 159, 1) 100%
+  );
   color: #fff;
 `;
 
@@ -72,7 +76,7 @@ export const Btn = styled.button`
   padding: 10px 20px;
   box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.15);
   margin: 10px 10px 10px 0;
-  transition: .6s;
+  transition: 0.6s;
 
   &:hover {
     background-color: #006359;

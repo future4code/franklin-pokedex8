@@ -37,7 +37,6 @@ const HomePage = () => {
     setPokemons(newPokemonList);
     const newPokedex = [...pokedex, pokemonSelected];
     setPokedex(newPokedex);
-    console.log(pokedex);
   };
 
   // function to go to next page
@@ -55,12 +54,10 @@ const HomePage = () => {
     axios
       .get(currentPageUrl)
       .then(response => {
-        console.log(response.data);
         setNextPageUrl(response.data.next);
         setPreviousPageUrl(response.data.previous);
         setPokemons(response.data.results);
         setPokemonType(response.data.types);
-        console.log(response.data.types.type.name);
       })
       .catch(error => {
         console.log(error);

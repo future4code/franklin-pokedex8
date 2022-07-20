@@ -27,7 +27,6 @@ const PokedexPage = () => {
     const newPokedex = [...pokedex];
     newPokedex.splice(index, 1);
     setPokedex(newPokedex);
-    console.log(pokedex);
   };
 
   // function to show pokemon added
