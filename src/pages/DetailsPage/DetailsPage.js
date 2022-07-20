@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
-import ProgressBar from "react-bootstrap/ProgressBar";
-import { BASE_URL } from "../../constants/url";
-import { useParams, useNavigate } from "react-router-dom";
-import { goToBackPage } from "../../routes/coordinator";
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import { BASE_URL } from '../../constants/url';
+import { useParams, useNavigate } from 'react-router-dom';
+import { goToBackPage } from '../../routes/coordinator';
 import {
   PokeCard,
   MainContainer,
@@ -19,17 +19,17 @@ import {
   Card,
   CardStats,
   CardMoves,
-  CardType,
-} from "./styled";
-import { ButtonDefault } from "../../components/ButtonDefault";
-import { GlobalStateContext } from "../../context/global/GlobalStateContext";
+  CardType
+} from './styled';
+import { ButtonDefault } from '../../components/ButtonDefault';
+import { GlobalStateContext } from '../../context/global/GlobalStateContext';
 
 const DetailsPage = () => {
   const [pokemonStats, setPokemonStats] = useState([]);
   const [pokemonType, setPokemonType] = useState([]);
   const [pokemonMoves, setPokemonMoves] = useState([]);
   const [pokemons, setPokemons] = useState([]);
-  const [id, setId] = useState("");
+  const [id, setId] = useState('');
   const { state, setters } = useContext(GlobalStateContext);
   const { pokedex } = state;
   const { setPokedex } = setters;
@@ -41,7 +41,7 @@ const DetailsPage = () => {
   const getPokemon = () => {
     axios
       .get(`${BASE_URL}/${params.idOrName}`)
-      .then((response) => {
+      .then(response => {
         setPokemonStats(response.data.stats);
         // console.log(response.data.stats)
         setPokemonType(response.data.types);
@@ -50,36 +50,35 @@ const DetailsPage = () => {
         // console.log(response.data.moves)
         setId(response.data.id);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
 
   // function to search pokemon at Pokedex
   const pokemonInPokedex = pokedex.find(
-    (pokemon) => pokemon.name === params.idOrName
+    pokemon => pokemon.name === params.idOrName
   );
 
   // function to add Pokemon at PokedexPage
-  const addToPokedex = (pokemonSelected) => {
-    const index = pokemons.findIndex((i) => i.name === pokemonSelected.name);
+  const addToPokedex = pokemonSelected => {
+    const index = pokemons.findIndex(i => i.name === pokemonSelected.name);
     const newPokemonList = [...pokemons];
     newPokemonList.splice(index, 1);
     setPokemons(newPokemonList);
     const newPokedex = [...pokedex, pokemonSelected];
     setPokedex(newPokedex);
-    goToBackPage();
+    goToBackPage(navigate);
   };
 
   // function to remove Pokemon from Pokedex
-  const removeFromPokedex = (pokemonSelected) => {
-    const index = pokedex.findIndex((i) => i.name === pokemonSelected.name);
+  const removeFromPokedex = pokemonSelected => {
+    const index = pokedex.findIndex(i => i.name === pokemonSelected.name);
     const newPokedex = [...pokedex];
     newPokedex.splice(index, 1);
     setPokedex(newPokedex);
-    goToBackPage();
+    goToBackPage(navigate);
   };
-
 
   useEffect(getPokemon, []);
 
@@ -107,7 +106,7 @@ const DetailsPage = () => {
               onClick={() =>
                 addToPokedex({
                   name: params.idOrName,
-                  url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`,
+                  url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
                 })
               }
             >
@@ -122,7 +121,7 @@ const DetailsPage = () => {
           )}
         </DivButton>
         <CardType>
-          {pokemonType.map((pokemon) => {
+          {pokemonType.map(pokemon => {
             return <div key={pokemon.type.name}>{pokemon.type.name}</div>;
           })}
         </CardType>
@@ -137,19 +136,19 @@ const DetailsPage = () => {
           />
         </div>
         <CardStats>
-          {pokemonStats.map((pokemon) => {
+          {pokemonStats.map(pokemon => {
             return (
               <div
                 key={pokemon.stat.name}
                 style={{
-                  display: "flex",
-                  gap: "20px",
-                  justifyContent: "flex-end",
+                  display: 'flex',
+                  gap: '20px',
+                  justifyContent: 'flex-end'
                 }}
               >
                 <strong>{pokemon.stat.name}: </strong>
                 <ProgressBar
-                  style={{ width: "80%", height: "25px" }}
+                  style={{ width: '80%', height: '25px' }}
                   now={pokemon.base_stat}
                   variant="warning"
                 />
@@ -158,13 +157,18 @@ const DetailsPage = () => {
             );
           })}
         </CardStats>
-        <h1 style={{fontWeight: "bold"}}>
-          Suas Habilidades
-        </h1>
+        <h1 style={{ fontWeight: 'bold' }}>Suas Habilidades</h1>
         <CardMoves>
-          {pokemonMoves.slice(0, 4).map((pokemon) => {
+          {pokemonMoves.slice(0, 4).map(pokemon => {
             return (
-              <div key={pokemon.move.name} style={{padding: "10px 0 0", margin: "0", textTransform: "uppercase"}}>
+              <div
+                key={pokemon.move.name}
+                style={{
+                  padding: '10px 0 0',
+                  margin: '0',
+                  textTransform: 'uppercase'
+                }}
+              >
                 <p>
                   <strong>{pokemon.move.name} </strong>
                 </p>
