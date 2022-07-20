@@ -4,7 +4,7 @@
 - Luan Wallace Pereira
 - Nicole Rafaella Vieira Peiker
 
-Link do Surge: [pokedex-luanwallace-nicolepeiker.surge.sh](pokedex-luanwallace-nicolepeiker.surge.sh)
+Link do Surge: [pokedexproject-luanwallace-nicolepeiker.surge.sh](pokedexproject-luanwallace-nicolepeiker.surge.sh)
 
 ## O que funciona:
 - Na home page é possivel adicionar os pokemons na pokedex e também ver os seus detalhes
