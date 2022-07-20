@@ -29,6 +29,7 @@ const HomePage = () => {
   const { pokedex } = state;
   const { setPokedex } = setters;
 
+  // function to add Pokemon at Pokedex Page
   const addToPokedex = pokemonSelected => {
     const index = pokemons.findIndex(i => i.name === pokemonSelected.name);
     const newPokemonList = [...pokemons];
@@ -39,10 +40,12 @@ const HomePage = () => {
     console.log(pokedex);
   };
 
+  // function to go to next page
   const goToNextPage = () => {
     setCurrentPageUrl(nextPageUrl);
   };
 
+  // function to go to previous page
   const goToPreviousPage = () => {
     setCurrentPageUrl(previousPageUrl);
   };
@@ -114,8 +117,10 @@ const HomePage = () => {
         </PokedexButton>
       </Header>
 
-      <div>
-        <h1> Escolha o Pokemon mais forte para adicionar na sua Pokedex !</h1>
+      <div style={{margin: "35px 0"}}>
+        <h1 style={{textTransform: "uppercase", fontWeight: "bold", fontSize:"45px"}}>
+          Escolha o Pokemon mais forte para adicionar na sua Pokedex !
+        </h1>
         <h2> Qual Pokemon você está procurando? </h2>
       </div>
 

@@ -21,6 +21,7 @@ const PokedexPage = () => {
   const { pokedex } = state;
   const { setPokedex } = setters;
 
+  //function to remove pokemon from pokedex page
   const removeFromPokedex = pokemonSelected => {
     const index = pokedex.findIndex(i => i.name === pokemonSelected.name);
     const newPokedex = [...pokedex];
@@ -29,6 +30,7 @@ const PokedexPage = () => {
     console.log(pokedex);
   };
 
+  // function to show pokemon added
   const pokedexList = pokedex.map(pokemon => {
     return (
       <PokeCard key={pokemon.name}>
@@ -50,7 +52,7 @@ const PokedexPage = () => {
     <Container>
       <Header>
         <PokedexButton>
-          <img 
+          <img
             style={{height:"80px", margin: "20px"}}
             src={pokedexLogo}
           />

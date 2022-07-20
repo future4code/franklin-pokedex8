@@ -37,6 +37,7 @@ const DetailsPage = () => {
   const params = useParams();
   // console.log(params)
 
+  // function to get Pokemon's list
   const getPokemon = () => {
     axios
       .get(`${BASE_URL}/${params.idOrName}`)
@@ -54,10 +55,12 @@ const DetailsPage = () => {
       });
   };
 
+  // function to search pokemon at Pokedex
   const pokemonInPokedex = pokedex.find(
     (pokemon) => pokemon.name === params.idOrName
   );
 
+  // function to add Pokemon at PokedexPage
   const addToPokedex = (pokemonSelected) => {
     const index = pokemons.findIndex((i) => i.name === pokemonSelected.name);
     const newPokemonList = [...pokemons];
@@ -68,6 +71,7 @@ const DetailsPage = () => {
     goToBackPage();
   };
 
+  // function to remove Pokemon from Pokedex
   const removeFromPokedex = (pokemonSelected) => {
     const index = pokedex.findIndex((i) => i.name === pokemonSelected.name);
     const newPokedex = [...pokedex];
@@ -97,6 +101,7 @@ const DetailsPage = () => {
           </BackButtonDiv>
         </MainContainer>
         <DivButton>
+          {/* // That is the logic to change button if we find Pokemon at Pokedex Page */}
           {pokemonInPokedex == undefined ? (
             <PokedexButtonAdd
               onClick={() =>
@@ -153,11 +158,13 @@ const DetailsPage = () => {
             );
           })}
         </CardStats>
-        <h1>MOVES</h1>
+        <h1 style={{fontWeight: "bold"}}>
+          Suas Habilidades
+        </h1>
         <CardMoves>
           {pokemonMoves.slice(0, 4).map((pokemon) => {
             return (
-              <div key={pokemon.move.name}>
+              <div key={pokemon.move.name} style={{padding: "10px 0 0", margin: "0", textTransform: "uppercase"}}>
                 <p>
                   <strong>{pokemon.move.name} </strong>
                 </p>
